@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Обработка многомерных массивов в JavaScrpt</title>
+		<script>
+			let n, minZn, maxZn, max;
+
+			// преобразование строк в целые числа
+			function but() {
+				n = parseInt(raw_data.size.value);
+				minZn = parseInt(raw_data.minimZn.value);
+				maxZn = parseInt(raw_data.maximZn.value);
+
+				// создание пустого двумерного массива
+				a = new Array();
+				for (let i = 0; i < n; i++) {
+					a[i] = new Array();
+				}
+			
+				// заполнение массива случайными значениями
+				for (let i = 0; i < n; i++) {
+					for (let j = 0; j < n; j++) {
+						a[i][j] = Math.floor( Math.random() * (maxZn - minZn + 1) + minZn );
+					}
+					
+					// подсчёт max элемента главной диагонали
+					
+					}
+				max = a[1][1];
+				for (let i=1; i<n; i++){
+					if (max<a[i][i]){
+						max = a[i][i];}
+				}
+
+				// вывод таблицы
+				document.write('<h3>Сгенерированная таблица</h3>');
+				document.write('<table style="width: 100%; border-collapse: collapse;">');
+				
+				for (let i = 0; i < n; i++) {
+					document.write('<tr>');
+					for (let j = 0; j < n; j++) {
+						document.write(`<td style="border: 1px solid black; padding: .2rem .4rem;">${a[i][j]}</td>`);
+					}
+					document.write('</tr>');
+				}
+
+				document.write('</table>');
+
+				
+				window.alert(`max элемент главной диагонали: \n${max}`);
+
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Лабораторная работа №20: обработка многомерных массивов в JavaScrpt</h2>
+	
+		<form name="raw_data">
+			<p>Введите кол-во строк и столбцов массива <b><i>n</i></b>: <input type="number" name="size" value="7"></p>
+			<p>Введите min значение элемента массива: <select name="minimZn">
+				<option value="">(выберите значение)</option>
+				<option value="-100">-100</option>
+				<option value="-50">-50</option>
+				<option value="-10">-10</option>
+				<option value="-12" selected>-12</option>
+				<option value="0">0</option>
+			</select></p>
+			<p>Введите max значение элемента массива: <select name="maximZn">
+				<option value="">(выберите значение)</option>
+				<option value="0">0</option>
+				<option value="3" selected>3</option>
+				<option value="20">20</option>
+				<option value="60">60</option>
+				<option value="150">150</option>
+			</select></p>
+
+			<h3>Определение max элемента главной диагонали:</h3>
+			<input type="button" onclick="but()" value="Start">
+		</form>
+	</body>
+</html>
